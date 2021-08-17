@@ -1,0 +1,19 @@
+body {
+  font-family:Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#popup-content {
+  width: 100px;
+}
+
+.item {
+  display: flex;
+  margin: 10px 0px;
+  align-items: center;
+}
+
+.item .unread {
+  width: 60px;
+  padding: 10px;
+}
