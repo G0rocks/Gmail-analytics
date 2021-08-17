@@ -2,18 +2,28 @@
   "manifest_version": 2,
   "name": "Gmail analytics",
   "version": "0.1",
+  "author": "Huldar",
 
   "description": "Analytics tool for Gmail",
 
+  "browser_action": {
+    "default_icon": "Images/Gmail_Icon.png",
+    "default_title": "Gmail analytics",
+    "default_popup": "Popup.html"
+  },
+
   "content_scripts": [
     {
-      "matches": ["https://*.google.com/search?*"],
+      "matches": ["https://mail.google.com/*"],
       "js": ["fetch_analytics.js"]
     }
   ],
 
-  "permissions": [
-    "*://duckduckgo.com/html/*"
-  ]
+ "background": {
+    "scripts":["background.js"]
+ },
 
+ "permissions": [
+   "storage"
+ ]
 }
