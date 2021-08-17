@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Gmail analytics",
+  "version": "0.1",
+
+  "description": "Analytics tool for Gmail",
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.google.com/search?*"],
+      "js": ["fetch_analytics.js"]
+    }
+  ],
+
+  "permissions": [
+    "*://duckduckgo.com/html/*"
+  ]
+
+}
