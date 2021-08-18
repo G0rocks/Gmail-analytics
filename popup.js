@@ -1,13 +1,27 @@
-console.log("Popup says hello");
+console.log("Popup.js start");
 
-browser.storage.local.get().then(function (result)) {
-  let results = [];
+async function get_unreads() {
 
-  for (const key of Object.keys(result)) {
-    results.push(result);
-  }
+  let unreads_promise = browser.storage.local.get(["Unreads"]);
+
+  unreads = await unreads_promise.then(
+    function(value) { console.log("unreads promise success: " + value["Unreads"])
+    return value["Unreads"]; },
+    function(error) { console.log("unreads promise failed: " + error)
+    return NaN; }
+  );
+
+  console.log("Unreads: " + unreads);
+
+  return unreads;
 }
 
-let site_info = document.getElementsById("unread_ID")
+async function set_popup_unreads(unreads){
+  document.getElementById("unread_ID").innerHTML = "Unread: " + await unreads;
+}
 
-site_info.getElementsByClassName("unread_class")[0].textContent = results["Unreads"];
+unreads = get_unreads();
+
+set_popup_unreads(unreads);
+
+console.log("Popup.js finished executing");
