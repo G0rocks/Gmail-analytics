@@ -16,8 +16,18 @@ function saveData() {
   let readToday = null;
   let last_update = null;
 
+  let test = browser.windows.getCurrent().then(
+    function(value) { //console.log("testPromise success: " + value)
+    return value; },
+    function(error) { console.log("testfailed: " + error)
+    return null; }
+  );
+
+  console.log("test: " + test)
+
   browser.storage.local.set({["Unreads"]: unreads})
   browser.storage.local.set({["Read_today"]: readToday})
+  browser.storage.local.set({["test"]: test});
 
   last_update = new Date().toISOString().slice(0,10) + " " + new Date().toISOString().slice(11,16)
   browser.storage.local.set({["Last update"]: last_update})
